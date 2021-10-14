@@ -1,0 +1,72 @@
+github : 程序分享平台/网站
+1.注册github账号并登录
+
+2.电脑与网站通信 : HTTPS,SSH (两种方式,都是安全协议)
+SSH如何配置
+ssh-keygen -t rsa -C "SublterDeep@163.com"
+找这个目录 C:\Users\Administrator\.ssh
+打开.pub文件将密钥给github
+
+3.创建一个远程仓库:存储准备要上传的分支
+小加号里边的第一个选项
+
+在本地创建 .gitignore 文件
+里边写入的文件会被忽略不被git status 识别
+
+4.生成一个仓库的地址
+查看远程仓库
+git remote
+设置远程地址,可以指定跟远程的哪一个仓库进行通信
+origin 为名字;后边的就是远程仓库的地址
+git remote add origin git@github.com:SublterDeep/gittest_1.git
+
+5.把本地的master分支上传到对应的远程地址上
+git push 远程地址名字 分支名字(master)
+git push origin master
+
+完成!
+
+6.如何下载github上的版本到电脑?
+git clone 仓库的地址
+git clone git@github.com:SublterDeep/gittest_1.git
+
+7.多人协作
+需要在项目中添加管理员
+这样就有权限上传到你的远程仓库了
+git@github.com:BOGELOVEYOU/gitstudy.git
+
+8.拉去最新的代码(github -> 本地)
+git pull origin master
+
+9.冲突的请款
+同一个云端的文件和本地的不一样
+但本地开始push了,这不行啊
+需要pull下代码,然后手动选择是哪个版本作为最新版本上传
+
+git 分支:
+master主分支(默认带的)
+分支可以实现更多的需求:
+
+查看当前有多少个分支
+git branch
+创建分支
+git branch 新分支名字
+切换分支
+git checkout 分支名字
+
+不同分支版本内容可能是不一样的
+
+合并分支
+先切换到想要操作的分支上,然后输入这个(例如git merge new)
+这样merge 分支就会加入到master 分支当中
+这样一来无论在new分支还是在master分支它们的内容都是一样的了
+git merge 分支名字
+删除分支
+git branch -d 分支名字
+
+查看里程碑
+git tag
+生成里程碑
+git tag v1.0.0
+上传里程碑
+git push origin v1.0.0
