@@ -1,3 +1,86 @@
+1.初始化git工具
+在指定的目录下打开git工具,这样就只会管理该路径下文件
+右键打开Bash
+git init
+
+2.设置git工具用户名和邮箱(设置一次就行,以后再次使用无需设置)
+查看是否配置过信息
+git config --list
+必须有 user.name 和 user.email 的配置
+如果没有说明还每配置:需要以下操作
+git config --global user.name "名字"
+git config --global user.email "邮箱"
+git config --global --unset user.name 删除配置
+
+3.版本管理的是文件的状态(快照):添加,修改,删除等(任何操作都是快照)
+查看状态
+git status
+     1.如果看到红色,说明工作区和暂存区状态不同
+     2.如果看到绿色,说明暂存区和版本区状态不同
+     3.啥也没有了,说明已经没有需要同步的文件了
+
+工作区 -> 暂存区
+git add 文件名.后缀
+
+暂存区 -> 版本区
+暂存区状态同步到版本区并生成版本
+版本的注释内容为:添加了a.txt文件
+git commit -m"添加了a.txt文件"
+
+把工作区所有要同步的文件同步到暂存区
+git add .
+
+修改版本
+git add 文件名.后缀
+git commit -m""
+
+查看所有版本
+git log
+输出时候的
+commit 25404af477b51ad4ba299c0bd3888c0a76e0d679 (HEAD -> master)
+后边那一串是唯一标识,commitID
+master : 默认只有一个主分支(各个版本的一个总称),用来存储对应版本
+head : 指针,指向当前版本,想要回滚版本就移动这个指针
+精简显示信息
+git log --pretty=oneline
+
+删除文件:
+1.工作区手动删除,然后git add,git commit同步过去
+这个会直接删除本地,且同步到暂存区
+2.git rm c.txt
+
+在当前版本基础上进行修改而不创建新版本
+git commit --amend -m"注释"
+
+查看工作区和暂存区的差异对比
+git diff
+查看暂存区与版本区对比
+git diff --cached
+工作区和版本区对比
+git diff master
+
+回退版本
+回到指针的当前版本
+把工作区和暂存区的状态又还原回到当前指针对应的版本
+git reset --hard HEAD
+回到上一个版本
+git reset --hard HEAD^
+回到上上个版本
+git reset --hard HEAD^^
+回到前50个版本
+git reset --hard HEAD^50
+
+回退到指定ID的版本
+git reset --hard commitId
+
+查看历史记录(如果不知道需要回退到的指定版本的ID)
+git reflog
+
+撤销(检出):让代码回到之前的样子但是版本不发生变化
+git checkout commitId 文件名.后缀
+把暂存区的状态同步到工作区
+git checkout -- 文件名.后缀
+
 github : 程序分享平台/网站
 1.注册github账号并登录
 
