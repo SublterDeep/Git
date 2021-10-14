@@ -1,4 +1,3 @@
 # Git
-only software not code
-# Easy to download
+# Easy to download,only software not code
 Git homepage : [here](http://git-scm.com/)
